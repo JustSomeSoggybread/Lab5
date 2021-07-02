@@ -7,10 +7,16 @@ void setup() {
 
 }
 
+int maxValue;
+int minValue;
+
 void loop() {
+  
   int value = analogRead(A5);
 
-  map(value, 0, 4095, 0, 255);
+  maxValue = max(maxValue, value);
+  minValue = min(minValue, value);
+  map(value, minValue, maxValue, 0, 255);
 
   analogWrite(D8, value);
 
